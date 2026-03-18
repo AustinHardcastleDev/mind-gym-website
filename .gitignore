@@ -2,3 +2,4 @@
 *.png
 !images/**/*.png
 .DS_Store
+.vercel

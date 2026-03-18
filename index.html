@@ -37,9 +37,9 @@
             --plum: #A08B95;
             --plum-light: #B09DA7;
             --plum-dark: #907B85;
-            --indigo: #7E8EA6;
-            --indigo-light: #92A0B5;
-            --indigo-dark: #6D7E97;
+            --indigo: #9BAFC0;
+            --indigo-light: #ADBFCE;
+            --indigo-dark: #899FB2;
 
             /* Typography */
             --ink: #2D2926;
@@ -299,11 +299,45 @@
         .hero {
             padding-top: calc(var(--section-pad) + 80px);
             padding-bottom: var(--section-pad);
-            text-align: center;
         }
 
-        .hero h1 {
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            text-align: left;
+        }
+
+        .hero-content h1 {
             margin-bottom: 0.5em;
+        }
+
+        .hero-content .waitlist-form {
+            margin: 0;
+        }
+
+        .hero-content .form-note {
+            text-align: left;
+        }
+
+        .hero-image {
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-height: 640px;
+            object-fit: cover;
+            object-position: center 55%;
+            display: block;
+            border-radius: 3px;
         }
 
         .hero-narrative {
@@ -311,6 +345,10 @@
             margin: 0 auto 2.5em;
             font-size: 1.15rem;
             line-height: 1.8;
+        }
+
+        .hero-content .hero-narrative {
+            margin: 0 0 2.5em;
         }
 
         .hero-narrative p {
@@ -424,35 +462,46 @@
             margin-bottom: 0.8em;
         }
 
-        .solution-features {
+        .category-grid {
             margin-top: 2.5em;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .feature-tag {
+        .category-card {
+            padding-top: 0;
+        }
+
+        .category-stripe {
+            height: 4px;
+            border-radius: 1px;
+            margin-bottom: 14px;
+        }
+
+        .category-card[data-deck="critical"] .category-stripe { background: var(--sage); }
+        .category-card[data-deck="creative"] .category-stripe { background: var(--terra); }
+        .category-card[data-deck="decision"] .category-stripe { background: var(--slate); }
+        .category-card[data-deck="writing"] .category-stripe { background: var(--ochre); }
+        .category-card[data-deck="analytical"] .category-stripe { background: var(--plum); }
+        .category-card[data-deck="memory"] .category-stripe { background: var(--indigo); }
+
+        .category-name {
             font-family: 'Fraunces', serif;
-            font-size: 0.82rem;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            padding: 8px 18px;
-            border-radius: 2px;
-            border-left: 3px solid var(--ink-faint);
-            border-top: 1px solid var(--cloud-dark);
-            border-right: 1px solid var(--cloud-dark);
-            border-bottom: 1px solid var(--cloud-dark);
-            color: var(--ink-medium);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.3em;
         }
 
-        .feature-tag[data-deck="critical"] { border-left-color: var(--sage); }
-        .feature-tag[data-deck="creative"] { border-left-color: var(--terra); }
-        .feature-tag[data-deck="decision"] { border-left-color: var(--slate); }
-        .feature-tag[data-deck="writing"] { border-left-color: var(--ochre); }
-        .feature-tag[data-deck="analytical"] { border-left-color: var(--plum); }
-        .feature-tag[data-deck="memory"] { border-left-color: var(--indigo); }
+        .category-desc {
+            font-size: 0.88rem;
+            color: var(--ink-medium);
+            line-height: 1.5;
+        }
 
         /* Card Mockup Image */
         .card-showcase {
@@ -463,8 +512,10 @@
 
         .card-showcase-img {
             width: 100%;
-            max-width: 680px;
-            height: auto;
+            max-width: 720px;
+            max-height: 520px;
+            object-fit: cover;
+            object-position: center 45%;
             border-radius: 4px;
         }
 
@@ -608,6 +659,48 @@
            OFFER SECTION
            ============================================ */
 
+        /* ============================================
+           PLAYBOOKS
+           ============================================ */
+
+        .playbook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 32px;
+            max-width: 680px;
+            margin: 2em auto 2.5em;
+        }
+
+        .playbook-item {
+            border-top: 2px solid var(--ink);
+            padding-top: 14px;
+        }
+
+        .playbook-name {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--ink);
+            margin-bottom: 0.3em;
+        }
+
+        .playbook-desc {
+            font-size: 0.92rem;
+            color: var(--ink-medium);
+            line-height: 1.55;
+        }
+
+        .playbook-closing {
+            font-size: 1rem;
+            color: var(--ink-medium);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           THE OFFER
+           ============================================ */
+
         .offer {
             text-align: center;
         }
@@ -621,18 +714,39 @@
             margin-bottom: 0.5em;
         }
 
+        .offer-pricing {
+            margin: 0.5em 0 0.2em;
+        }
+
+        .offer-price-original {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--ink-light);
+            text-decoration: line-through;
+            text-decoration-thickness: 1.5px;
+            margin-bottom: 0.1em;
+        }
+
         .offer-price {
             font-family: 'Fraunces', serif;
             font-size: 2.4rem;
             font-weight: 700;
             color: var(--ink);
-            margin: 0.5em 0 0.2em;
         }
 
         .offer-price-note {
             font-size: 0.9rem;
             color: var(--ink-light);
-            margin-bottom: 2em;
+            margin-bottom: 1.2em;
+        }
+
+        .offer-comparison {
+            font-size: 1rem;
+            color: var(--ink-medium);
+            max-width: 540px;
+            margin: 0 auto 2em;
+            line-height: 1.7;
         }
 
         .offer-benefits {
@@ -754,7 +868,7 @@
         }
 
         .faq-item.open .faq-answer {
-            max-height: 300px;
+            max-height: 400px;
             padding-bottom: 24px;
         }
 
@@ -871,6 +985,36 @@
                 padding-top: calc(var(--section-pad) + 60px);
             }
 
+            .hero-split {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-image img {
+                max-height: 40vh;
+                border-radius: 2px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-content .waitlist-form {
+                margin: 0 auto;
+            }
+
+            .hero-content .form-note {
+                text-align: center;
+            }
+
+            .hero-content .hero-narrative {
+                margin: 0 auto 2em;
+            }
+
             .waitlist-form {
                 flex-direction: column;
                 gap: 10px;
@@ -905,6 +1049,16 @@
                 height: 14px;
             }
 
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .playbook-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
             .offer-price {
                 font-size: 2rem;
             }
@@ -933,19 +1087,24 @@
          HERO
          ============================================ -->
     <section class="section hero">
-        <div class="section-inner">
-            <h1 class="reveal">Your mind<br>needs a gym.</h1>
-            <div class="hero-narrative reveal reveal-delay-1">
-                <p>For most of human history, nobody needed a gym. Daily life was the workout. Then machines took over the physical work — and slowly, without anyone noticing, we got weaker.</p>
-                <p>We invented the gym to fix that.</p>
-                <p>The same thing is happening now with your mind.</p>
+        <div class="hero-split">
+            <div class="hero-content">
+                <h1 class="reveal">Your mind<br>needs a gym.</h1>
+                <div class="hero-narrative reveal reveal-delay-1">
+                    <p>For most of human history, nobody needed a gym. Daily life was the workout. Then machines took over the physical work — and slowly, without anyone noticing, we got weaker.</p>
+                    <p>We invented the gym to fix that.</p>
+                    <p>The same thing is happening now with your mind.</p>
+                </div>
+                <p class="hero-cta-text reveal reveal-delay-2">Join the waitlist &mdash; get 3 free exercises to try today.</p>
+                <form class="waitlist-form reveal reveal-delay-3" id="waitlist-hero">
+                    <input type="email" placeholder="your@email.com" required aria-label="Email address">
+                    <button type="submit">Join Waitlist</button>
+                </form>
+                <p class="form-note reveal reveal-delay-3">No spam. Just a note when it's ready.</p>
             </div>
-            <p class="hero-cta-text reveal reveal-delay-2">Join the waitlist &mdash; get 3 free exercises to try today.</p>
-            <form class="waitlist-form reveal reveal-delay-3" id="waitlist-hero">
-                <input type="email" placeholder="your@email.com" required aria-label="Email address">
-                <button type="submit">Join Waitlist</button>
-            </form>
-            <p class="form-note reveal reveal-delay-3">No spam. Just a note when it's ready.</p>
+            <div class="hero-image reveal reveal-delay-2">
+                <img src="images/hero.png" alt="Mind Sets exercise cards spread on a wooden desk beside a coffee cup, pen, and card pouch — a morning thinking session" fetchpriority="high">
+            </div>
         </div>
     </section>
 
@@ -996,26 +1155,102 @@
                 <p>No app. No algorithm. No subscription. No expiration date.</p>
                 <p>Just you, something to write with, and 10 minutes.</p>
             </div>
-            <div class="solution-features reveal reveal-delay-2">
-                <span class="feature-tag" data-deck="critical">Critical Thinking</span>
-                <span class="feature-tag" data-deck="creative">Creative Thinking</span>
-                <span class="feature-tag" data-deck="decision">Decision-Making</span>
-                <span class="feature-tag" data-deck="writing">Writing &amp; Composition</span>
-                <span class="feature-tag" data-deck="analytical">Analytical Reasoning</span>
-                <span class="feature-tag" data-deck="memory">Memory &amp; Recall</span>
+            <div class="category-grid reveal reveal-delay-2">
+                <div class="category-card" data-deck="critical">
+                    <div class="category-stripe"></div>
+                    <div class="category-name">Critical Thinking</div>
+                    <p class="category-desc">Question what you're told. Question what you believe.</p>
+                </div>
+                <div class="category-card" data-deck="creative">
+                    <div class="category-stripe"></div>
+                    <div class="category-name">Creative Thinking</div>
+                    <p class="category-desc">Break fixed patterns. See what others miss.</p>
+                </div>
+                <div class="category-card" data-deck="decision">
+                    <div class="category-stripe"></div>
+                    <div class="category-name">Decision-Making</div>
+                    <p class="category-desc">Reason through uncertainty instead of past it.</p>
+                </div>
+                <div class="category-card" data-deck="writing">
+                    <div class="category-stripe"></div>
+                    <div class="category-name">Writing &amp; Composition</div>
+                    <p class="category-desc">Think by writing. Not typing — writing.</p>
+                </div>
+                <div class="category-card" data-deck="analytical">
+                    <div class="category-stripe"></div>
+                    <div class="category-name">Analytical Reasoning</div>
+                    <p class="category-desc">Find the pattern. Test the logic. Spot the flaw.</p>
+                </div>
+                <div class="category-card" data-deck="memory">
+                    <div class="category-stripe"></div>
+                    <div class="category-name">Memory &amp; Recall</div>
+                    <p class="category-desc">Retain what you read. Retrieve it when it counts.</p>
+                </div>
             </div>
         </div>
 
         <!-- Card Showcase -->
         <div class="section-wide">
             <div class="card-showcase reveal">
-                <img src="images/card-mockup.png" alt="Mind Sets exercise cards showing The Flood Gate exercise — front with title, category, and citation, and back with step-by-step instructions" class="card-showcase-img">
+                <img src="images/card-spread.png" alt="Three Mind Sets exercise cards fanned on marble — Sentence Architect, Fermi Gauntlet, and a card back showing step-by-step instructions with Why It Works section" class="card-showcase-img">
             </div>
         </div>
     </section>
 
     <!-- Stripe Divider: Slate (Decision-Making) -->
     <div class="stripe-divider slate stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         PLAYBOOKS
+         ============================================ -->
+    <section class="section playbooks">
+        <div class="section-inner">
+            <h2 class="reveal" style="margin-bottom: 1em;">6 playbooks. 6 patterns.</h2>
+            <div class="reveal reveal-delay-1">
+                <p>The deck includes six playbook cards. Each one identifies a specific pattern of cognitive autopilot — the kind that sets in when AI handles too much of your thinking — and prescribes the exact exercises to counter it.</p>
+                <p>Unlike the six categories, playbooks cut across the entire deck. Each one pulls from multiple categories to target a specific problem from different angles.</p>
+                <p>Find the pattern that fits your week. Pull the cards. Do one or two per session.</p>
+            </div>
+
+            <div class="playbook-grid reveal reveal-delay-2">
+                <div class="playbook-item">
+                    <div class="playbook-name">On Autopilot</div>
+                    <p class="playbook-desc">You prompt, review, approve, redirect. The work gets done, but your brain is coasting.</p>
+                </div>
+                <div class="playbook-item">
+                    <div class="playbook-name">Consuming, Not Creating</div>
+                    <p class="playbook-desc">You're editing, not writing. Evaluating, not building. The production side has gone quiet.</p>
+                </div>
+                <div class="playbook-item">
+                    <div class="playbook-name">Deciding Too Fast</div>
+                    <p class="playbook-desc">AI handles the analysis, you sign off. Your deliberate reasoning hasn't had a real rep.</p>
+                </div>
+                <div class="playbook-item">
+                    <div class="playbook-name">Heads Down Executing</div>
+                    <p class="playbook-desc">High throughput, zero reflection. Execution without altitude.</p>
+                </div>
+                <div class="playbook-item">
+                    <div class="playbook-name">Digging In</div>
+                    <p class="playbook-desc">AI builds your case. You've stopped genuinely considering the other side.</p>
+                </div>
+                <div class="playbook-item">
+                    <div class="playbook-name">Planning Without Doing</div>
+                    <p class="playbook-desc">The strategies pile up. None of them have hit reality.</p>
+                </div>
+            </div>
+
+            <p class="playbook-closing reveal reveal-delay-3">Think of them as workout programs. You don't have to figure out which exercises to do — just follow the prescription.</p>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Ochre -->
+    <div class="stripe-divider ochre stripe-reveal">
         <div class="thin"></div>
         <div class="gap"></div>
         <div class="thick"></div>
@@ -1117,14 +1352,17 @@
     <section class="section offer">
         <div class="section-inner">
             <h2 class="reveal">Coming soon.</h2>
-            <p class="offer-description reveal reveal-delay-1"><strong>Mind Sets</strong> — 72 exercise cards across six categories, each backed by a unique peer-reviewed study.</p>
-            <div class="offer-price reveal reveal-delay-1">$79</div>
-            <p class="offer-price-note reveal reveal-delay-1">Early bird pricing for waitlist members</p>
-            <p class="offer-description reveal reveal-delay-1" style="margin-top: 1em; font-size: 1rem;">You're not paying for paper and ink. You're paying for the curation — hundreds of studies read, filtered, and distilled into 72 exercises that actually work.</p>
+            <p class="offer-description reveal reveal-delay-1"><strong>Mind Sets</strong> — 72 exercise cards across six categories, 6 playbook cards, each exercise backed by a unique peer-reviewed study.</p>
+            <div class="offer-pricing reveal reveal-delay-1">
+                <div class="offer-price-original">$119</div>
+                <div class="offer-price">$79</div>
+            </div>
+            <p class="offer-price-note reveal reveal-delay-1">Waitlist price — goes to $119 at launch</p>
+            <p class="offer-comparison reveal reveal-delay-1">A critical thinking workshop runs $300–500 for a half day. Coaching is $150/hr. Mind Sets is 72 exercises you return to for years — about $1.10 each.</p>
 
             <ul class="offer-benefits reveal reveal-delay-2">
                 <li>The 3-Exercise Sampler (free PDF, delivered immediately)</li>
-                <li>First access when Mind Sets goes on sale — including early bird pricing</li>
+                <li>First access at the $79 early bird price</li>
             </ul>
 
             <form class="waitlist-form reveal reveal-delay-2" id="waitlist-bottom">
@@ -1208,7 +1446,8 @@
                         <span class="faq-icon"></span>
                     </button>
                     <div class="faq-answer">
-                        <p>The cards themselves are not where the cost lives. The value is the curation — we went through hundreds of peer-reviewed studies across cognitive science, found the techniques that actually work, and distilled each one into a structured exercise you can do in 10 minutes. Most research didn't survive that filter. What's in the deck is what did.</p>
+                        <p>Consider the alternatives. A critical thinking workshop runs $300–500 for a half day. Coaching is $150/hr. A cognitive science course starts at $200. Each of those is something you do once.</p>
+                        <p>Mind Sets is 72 exercises — each backed by a specific peer-reviewed study, each designed to be returned to — for about $1.10 per exercise. We went through hundreds of studies and kept only what actually works. The $79 waitlist price is for early supporters. It goes to $119 at launch.</p>
                     </div>
                 </div>
 
