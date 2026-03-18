@@ -156,8 +156,8 @@
         }
 
         /* ============================================
-           GYM SOCK STRIPE DIVIDERS
-           Two parallel stripes — thick + thin with gap
+           STRIPE DIVIDERS
+           Thin–thick–thin pattern (matches wordmark)
            ============================================ */
 
         .stripe-divider {
@@ -168,17 +168,17 @@
             align-items: stretch;
         }
 
-        .stripe-divider .thick {
-            height: 20px;
+        .stripe-divider .thin {
+            height: 7px;
         }
 
         .stripe-divider .gap {
-            height: 7px;
+            height: 5px;
             background: var(--cloud);
         }
 
-        .stripe-divider .thin {
-            height: 11px;
+        .stripe-divider .thick {
+            height: 20px;
         }
 
         .stripe-divider.sage .thick,
@@ -827,8 +827,16 @@
             transition: transform 0.8s var(--ease-out);
         }
 
-        .stripe-reveal .thin {
-            transition-delay: 0.1s;
+        .stripe-reveal .thin:first-child {
+            transition-delay: 0s;
+        }
+
+        .stripe-reveal .thick {
+            transition-delay: 0.08s;
+        }
+
+        .stripe-reveal .thin:last-child {
+            transition-delay: 0.16s;
         }
 
         .stripe-reveal.visible .thick,
@@ -884,16 +892,16 @@
                 padding: 24px;
             }
 
-            .stripe-divider .thick {
-                height: 14px;
-            }
-
-            .stripe-divider .gap {
+            .stripe-divider .thin {
                 height: 5px;
             }
 
-            .stripe-divider .thin {
-                height: 8px;
+            .stripe-divider .gap {
+                height: 3px;
+            }
+
+            .stripe-divider .thick {
+                height: 14px;
             }
 
             .offer-price {
@@ -942,6 +950,8 @@
 
     <!-- Stripe Divider: Sage (Critical Thinking) -->
     <div class="stripe-divider sage stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -965,6 +975,8 @@
 
     <!-- Stripe Divider: Terra (Creative Thinking) -->
     <div class="stripe-divider terra stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1003,6 +1015,8 @@
 
     <!-- Stripe Divider: Slate (Decision-Making) -->
     <div class="stripe-divider slate stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1041,6 +1055,8 @@
 
     <!-- Stripe Divider: Ochre (Writing & Composition) -->
     <div class="stripe-divider ochre stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1063,6 +1079,8 @@
 
     <!-- Stripe Divider: Plum (Analytical Reasoning) -->
     <div class="stripe-divider plum stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1085,6 +1103,8 @@
 
     <!-- Stripe Divider: Indigo (Memory & Recall) -->
     <div class="stripe-divider indigo stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1116,6 +1136,8 @@
 
     <!-- Stripe Divider: Sage -->
     <div class="stripe-divider sage stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1205,6 +1227,8 @@
 
     <!-- Stripe Divider: Terra -->
     <div class="stripe-divider terra stripe-reveal">
+        <div class="thin"></div>
+        <div class="gap"></div>
         <div class="thick"></div>
         <div class="gap"></div>
         <div class="thin"></div>
@@ -1234,6 +1258,8 @@
          ============================================ -->
     <footer class="site-footer">
         <div class="stripe-divider sage" style="margin-bottom: 40px;">
+            <div class="thin"></div>
+            <div class="gap"></div>
             <div class="thick"></div>
             <div class="gap"></div>
             <div class="thin"></div>
