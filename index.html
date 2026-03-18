@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Gym — Your mind needs a gym.</title>
+    <meta name="description" content="60 cognitive exercises backed by peer-reviewed research. Physical card decks to keep your mind sharp in the age of AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           MIND GYM — Landing Page
+           Aesthetic: Analog Stationery + Athletic Nostalgia
+           ============================================ */
+
+        :root {
+            /* Cloud Dancer — Pantone warm white */
+            --cloud: #F0EBE3;
+            --cloud-light: #F5F2EC;
+            --cloud-dark: #E8E3DA;
+
+            /* Gym sock stripes — 6 deck colors */
+            --sage: #97A98E;
+            --sage-light: #A8B8A0;
+            --sage-dark: #869B7D;
+            --terra: #C2805A;
+            --terra-light: #D0946F;
+            --terra-dark: #B06E48;
+            --slate: #8B9BA8;
+            --slate-light: #9DAAB5;
+            --slate-dark: #7A8B99;
+            --ochre: #C4A46C;
+            --ochre-light: #D0B37F;
+            --ochre-dark: #B29358;
+            --plum: #A08B95;
+            --plum-light: #B09DA7;
+            --plum-dark: #907B85;
+            --indigo: #7E8EA6;
+            --indigo-light: #92A0B5;
+            --indigo-dark: #6D7E97;
+
+            /* Typography */
+            --ink: #2D2926;
+            --ink-medium: #5C5652;
+            --ink-light: #8A8480;
+            --ink-faint: #B5AFAB;
+
+            /* Spacing */
+            --section-pad: clamp(80px, 12vw, 140px);
+            --content-width: 720px;
+            --wide-width: 960px;
+
+            /* Transitions */
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Fraunces', serif;
+            font-weight: 300;
+            font-optical-sizing: auto;
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--ink);
+            background-color: var(--cloud);
+            overflow-x: hidden;
+        }
+
+        /* Subtle paper grain texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+
+        h1, h2, h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-optical-sizing: auto;
+            line-height: 1.15;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 500;
+            font-variation-settings: 'SOFT' 50, 'WONK' 1;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 600;
+            font-variation-settings: 'SOFT' 30, 'WONK' 1;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            font-variation-settings: 'SOFT' 20, 'WONK' 1;
+        }
+
+        p {
+            margin-bottom: 1.4em;
+            color: var(--ink-medium);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            font-weight: 500;
+            color: var(--ink);
+            font-variation-settings: 'SOFT' 0, 'WONK' 0;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+
+        .section {
+            padding: var(--section-pad) 24px;
+        }
+
+        .section-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .section-wide {
+            max-width: var(--wide-width);
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           GYM SOCK STRIPE DIVIDERS
+           Two parallel stripes — thick + thin with gap
+           ============================================ */
+
+        .stripe-divider {
+            width: 100%;
+            padding: 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .stripe-divider .thick {
+            height: 20px;
+        }
+
+        .stripe-divider .gap {
+            height: 7px;
+            background: var(--cloud);
+        }
+
+        .stripe-divider .thin {
+            height: 11px;
+        }
+
+        .stripe-divider.sage .thick,
+        .stripe-divider.sage .thin {
+            background-color: var(--sage);
+        }
+
+        .stripe-divider.terra .thick,
+        .stripe-divider.terra .thin {
+            background-color: var(--terra);
+        }
+
+        .stripe-divider.slate .thick,
+        .stripe-divider.slate .thin {
+            background-color: var(--slate);
+        }
+
+        .stripe-divider.ochre .thick,
+        .stripe-divider.ochre .thin {
+            background-color: var(--ochre);
+        }
+
+        .stripe-divider.plum .thick,
+        .stripe-divider.plum .thin {
+            background-color: var(--plum);
+        }
+
+        .stripe-divider.indigo .thick,
+        .stripe-divider.indigo .thin {
+            background-color: var(--indigo);
+        }
+
+        /* ============================================
+           HEADER / NAV
+           ============================================ */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .site-header.scrolled {
+            background-color: rgba(240, 235, 227, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(45, 41, 38, 0.06);
+        }
+
+        .wordmark {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .wordmark-stripe {
+            width: 28px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex-shrink: 0;
+        }
+
+        .wordmark-stripe span:first-child {
+            flex: 1;
+            background: var(--sage);
+            border-radius: 1px;
+        }
+
+        .wordmark-stripe span:last-child {
+            height: 4px;
+            background: var(--sage);
+            border-radius: 1px;
+        }
+
+        .wordmark-text {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-cta {
+            font-family: 'Fraunces', serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink);
+            text-decoration: none;
+            padding: 10px 24px;
+            border: 1.5px solid var(--ink);
+            border-radius: 2px;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .nav-cta:hover {
+            background: var(--ink);
+            color: var(--cloud);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+
+        .hero {
+            padding-top: calc(var(--section-pad) + 80px);
+            padding-bottom: var(--section-pad);
+            text-align: center;
+        }
+
+        .hero h1 {
+            margin-bottom: 0.5em;
+        }
+
+        .hero-narrative {
+            max-width: 600px;
+            margin: 0 auto 2.5em;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .hero-narrative p {
+            color: var(--ink-medium);
+        }
+
+        .hero-cta-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-style: italic;
+            font-variation-settings: 'SOFT' 50, 'WONK' 1;
+            color: var(--ink);
+            margin-bottom: 1.5em;
+        }
+
+        /* ============================================
+           WAITLIST FORM
+           ============================================ */
+
+        .waitlist-form {
+            display: flex;
+            gap: 0;
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        .waitlist-form input[type="email"] {
+            flex: 1;
+            padding: 16px 20px;
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            color: var(--ink);
+            background: var(--cloud-light);
+            border: 1.5px solid var(--ink-faint);
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .waitlist-form input[type="email"]::placeholder {
+            color: var(--ink-light);
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            border-color: var(--sage);
+        }
+
+        .waitlist-form button {
+            padding: 16px 32px;
+            font-family: 'Fraunces', serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cloud);
+            background: var(--ink);
+            border: 1.5px solid var(--ink);
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .waitlist-form button:hover {
+            background: var(--sage-dark);
+            border-color: var(--sage-dark);
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.82rem;
+            color: var(--ink-light);
+            letter-spacing: 0.01em;
+        }
+
+        /* ============================================
+           PROBLEM SECTION
+           ============================================ */
+
+        .problem {
+            background: var(--cloud-light);
+        }
+
+        .problem h2 {
+            margin-bottom: 0.8em;
+        }
+
+        .problem p {
+            font-size: 1.05rem;
+        }
+
+        .problem .emphasis {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            font-style: italic;
+            font-variation-settings: 'SOFT' 50, 'WONK' 1;
+            color: var(--ink);
+            line-height: 1.5;
+            margin: 1.8em 0;
+        }
+
+        /* ============================================
+           SOLUTION SECTION
+           ============================================ */
+
+        .solution h2 {
+            margin-bottom: 0.8em;
+        }
+
+        .solution-features {
+            margin-top: 2.5em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .feature-tag {
+            font-family: 'Fraunces', serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 2px;
+            border-left: 3px solid var(--ink-faint);
+            border-top: 1px solid var(--cloud-dark);
+            border-right: 1px solid var(--cloud-dark);
+            border-bottom: 1px solid var(--cloud-dark);
+            color: var(--ink-medium);
+        }
+
+        .feature-tag[data-deck="critical"] { border-left-color: var(--sage); }
+        .feature-tag[data-deck="creative"] { border-left-color: var(--terra); }
+        .feature-tag[data-deck="decision"] { border-left-color: var(--slate); }
+        .feature-tag[data-deck="writing"] { border-left-color: var(--ochre); }
+        .feature-tag[data-deck="analytical"] { border-left-color: var(--plum); }
+        .feature-tag[data-deck="memory"] { border-left-color: var(--indigo); }
+
+        /* Card Mockup Image */
+        .card-showcase {
+            margin-top: 4em;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-showcase-img {
+            width: 100%;
+            max-width: 680px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* ============================================
+           SAMPLER SECTION
+           ============================================ */
+
+        .sampler {
+            background: var(--cloud-light);
+        }
+
+        .sampler h2 {
+            margin-bottom: 0.6em;
+        }
+
+        .sampler-intro {
+            margin-bottom: 3em;
+        }
+
+        .exercise-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 3em;
+        }
+
+        .exercise-card {
+            background: var(--cloud);
+            border-radius: 4px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(45, 41, 38, 0.04);
+        }
+
+        .exercise-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+        }
+
+        .exercise-card.accent-sage::before { background: var(--sage); }
+        .exercise-card.accent-terra::before { background: var(--terra); }
+        .exercise-card.accent-slate::before { background: var(--slate); }
+        .exercise-card.accent-ochre::before { background: var(--ochre); }
+        .exercise-card.accent-plum::before { background: var(--plum); }
+        .exercise-card.accent-indigo::before { background: var(--indigo); }
+
+        .exercise-card-deck {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .exercise-card.accent-sage .exercise-card-deck { color: var(--sage-dark); }
+        .exercise-card.accent-terra .exercise-card-deck { color: var(--terra-dark); }
+        .exercise-card.accent-slate .exercise-card-deck { color: var(--slate-dark); }
+        .exercise-card.accent-ochre .exercise-card-deck { color: var(--ochre-dark); }
+        .exercise-card.accent-plum .exercise-card-deck { color: var(--plum-dark); }
+        .exercise-card.accent-indigo .exercise-card-deck { color: var(--indigo-dark); }
+
+        .exercise-card h3 {
+            margin-bottom: 0.5em;
+        }
+
+        .exercise-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        .sampler-cta {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 1.5em;
+        }
+
+        /* ============================================
+           CTA BUTTON (standalone)
+           ============================================ */
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 40px;
+            font-family: 'Fraunces', serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cloud);
+            background: var(--ink);
+            border: 1.5px solid var(--ink);
+            border-radius: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-dark);
+            border-color: var(--sage-dark);
+        }
+
+        /* ============================================
+           DIFFERENTIATION SECTION
+           ============================================ */
+
+        .differentiation h2 {
+            margin-bottom: 0.8em;
+        }
+
+        /* ============================================
+           CREDIBILITY SECTION
+           ============================================ */
+
+        .credibility {
+            background: var(--cloud-light);
+        }
+
+        .credibility h2 {
+            margin-bottom: 0.8em;
+        }
+
+        .credibility .citations {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            font-variation-settings: 'SOFT' 50, 'WONK' 1;
+            color: var(--ink-light);
+            line-height: 1.6;
+            margin: 1.5em 0;
+        }
+
+        /* ============================================
+           OFFER SECTION
+           ============================================ */
+
+        .offer {
+            text-align: center;
+        }
+
+        .offer h2 {
+            margin-bottom: 0.4em;
+        }
+
+        .offer-description {
+            font-size: 1.05rem;
+            margin-bottom: 0.5em;
+        }
+
+        .offer-price {
+            font-family: 'Fraunces', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0.5em 0 0.2em;
+        }
+
+        .offer-price-note {
+            font-size: 0.9rem;
+            color: var(--ink-light);
+            margin-bottom: 2em;
+        }
+
+        .offer-benefits {
+            list-style: none;
+            max-width: 480px;
+            margin: 0 auto 2.5em;
+            text-align: left;
+        }
+
+        .offer-benefits li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--ink-medium);
+            font-size: 1.05rem;
+        }
+
+        .offer-benefits li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 3px;
+            background: var(--sage);
+        }
+
+        /* ============================================
+           FAQ SECTION
+           ============================================ */
+
+        .faq {
+            background: var(--cloud-light);
+        }
+
+        .faq h2 {
+            margin-bottom: 1.5em;
+            text-align: center;
+        }
+
+        .faq-list {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--cloud-dark);
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid var(--cloud-dark);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.3;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--sage-dark);
+        }
+
+        .faq-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-left: 16px;
+            position: relative;
+            transition: transform 0.3s var(--ease-out);
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--ink-medium);
+            transition: transform 0.3s var(--ease-out), opacity 0.3s ease;
+        }
+
+        .faq-icon::before {
+            width: 20px;
+            height: 1.5px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .faq-icon::after {
+            width: 1.5px;
+            height: 20px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.open .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding-bottom: 24px;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           CLOSING CTA
+           ============================================ */
+
+        .closing {
+            text-align: center;
+        }
+
+        .closing h2 {
+            max-width: 580px;
+            margin: 0 auto 0.6em;
+        }
+
+        .closing p {
+            margin-bottom: 1.2em;
+        }
+
+        .closing .hero-cta-text {
+            margin-top: 1.5em;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+
+        .site-footer {
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .footer-wordmark {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink-light);
+            letter-spacing: 0.03em;
+            font-style: italic;
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        .stripe-reveal .thick,
+        .stripe-reveal .thin {
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.8s var(--ease-out);
+        }
+
+        .stripe-reveal .thin {
+            transition-delay: 0.1s;
+        }
+
+        .stripe-reveal.visible .thick,
+        .stripe-reveal.visible .thin {
+            transform: scaleX(1);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .site-header {
+                padding: 16px 20px;
+            }
+
+            .nav-cta {
+                font-size: 0.75rem;
+                padding: 8px 16px;
+            }
+
+            .section {
+                padding: var(--section-pad) 20px;
+            }
+
+            .hero {
+                padding-top: calc(var(--section-pad) + 60px);
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .waitlist-form input[type="email"] {
+                border-right: 1.5px solid var(--ink-faint);
+                border-radius: 2px;
+            }
+
+            .waitlist-form input[type="email"]:focus {
+                border-color: var(--sage);
+            }
+
+            .waitlist-form button {
+                border-radius: 2px;
+            }
+
+            .exercise-card {
+                padding: 24px;
+            }
+
+            .stripe-divider .thick {
+                height: 14px;
+            }
+
+            .stripe-divider .gap {
+                height: 5px;
+            }
+
+            .stripe-divider .thin {
+                height: 8px;
+            }
+
+            .offer-price {
+                font-size: 2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER
+         ============================================ -->
+    <header class="site-header" id="site-header">
+        <a href="#" class="wordmark">
+            <div class="wordmark-stripe">
+                <span></span>
+                <span></span>
+            </div>
+            <span class="wordmark-text">Mind Gym</span>
+        </a>
+        <a href="#waitlist-hero" class="nav-cta">Join Waitlist</a>
+    </header>
+
+    <!-- ============================================
+         HERO
+         ============================================ -->
+    <section class="section hero">
+        <div class="section-inner">
+            <h1 class="reveal">Your mind<br>needs a gym.</h1>
+            <div class="hero-narrative reveal reveal-delay-1">
+                <p>For most of human history, nobody needed a gym. Daily life was the workout. Then machines took over the physical work — and slowly, without anyone noticing, we got weaker.</p>
+                <p>We invented the gym to fix that.</p>
+                <p>The same thing is happening now with your mind.</p>
+            </div>
+            <p class="hero-cta-text reveal reveal-delay-2">Join the waitlist &mdash; get 3 free exercises to try today.</p>
+            <form class="waitlist-form reveal reveal-delay-3" id="waitlist-hero">
+                <input type="email" placeholder="your@email.com" required aria-label="Email address">
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p class="form-note reveal reveal-delay-3">No spam. Just a note when it's ready.</p>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Sage (Critical Thinking) -->
+    <div class="stripe-divider sage stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         PROBLEM
+         ============================================ -->
+    <section class="section problem">
+        <div class="section-inner">
+            <h2 class="reveal">The skills you stop practicing are the skills you lose.</h2>
+            <div class="reveal reveal-delay-1">
+                <p>AI handles the drafting, the summarizing, the analysis, the first pass at almost everything. And it's good at it.</p>
+                <p>But something is shifting.</p>
+                <p>The opinion you used to form in an hour now takes a full day — because you keep checking what Claude thinks first. The creative idea that used to come in the shower now comes from a prompt. The decision you used to trust your gut on now needs a second opinion from a chatbot.</p>
+                <p class="emphasis">Not because you're broken. Because you're understimulated.</p>
+                <p>Critical thinking. Creative reasoning. Decision-making under uncertainty. These aren't things you learn once. They're things you train. And if you stop training them, they atrophy — slowly, quietly, the way a muscle weakens when you stop using it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Terra (Creative Thinking) -->
+    <div class="stripe-divider terra stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         SOLUTION
+         ============================================ -->
+    <section class="section solution">
+        <div class="section-inner">
+            <h2 class="reveal">60 exercises to keep your mind sharp.</h2>
+            <div class="reveal reveal-delay-1">
+                <p><strong>Mind Gym</strong> is six physical card decks — 60 exercises across Critical Thinking, Creative Thinking, Decision-Making, Writing &amp; Composition, Analytical Reasoning, and Memory &amp; Recall.</p>
+                <p>Each exercise is backed by a specific peer-reviewed study. Each one is designed to be returned to, not completed. They give you a reason to step away from the screen and actually think — with structure instead of just good intentions.</p>
+                <p>No app. No algorithm. No subscription. No expiration date.</p>
+                <p>Just you, something to write with, and 10 minutes.</p>
+            </div>
+            <div class="solution-features reveal reveal-delay-2">
+                <span class="feature-tag" data-deck="critical">Critical Thinking</span>
+                <span class="feature-tag" data-deck="creative">Creative Thinking</span>
+                <span class="feature-tag" data-deck="decision">Decision-Making</span>
+                <span class="feature-tag" data-deck="writing">Writing &amp; Composition</span>
+                <span class="feature-tag" data-deck="analytical">Analytical Reasoning</span>
+                <span class="feature-tag" data-deck="memory">Memory &amp; Recall</span>
+            </div>
+        </div>
+
+        <!-- Card Showcase -->
+        <div class="section-wide">
+            <div class="card-showcase reveal">
+                <img src="images/card-mockup.png" alt="Mind Gym exercise cards showing The Flood Gate exercise — front with title, category, and citation, and back with step-by-step instructions" class="card-showcase-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Slate (Decision-Making) -->
+    <div class="stripe-divider slate stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         SAMPLER
+         ============================================ -->
+    <section class="section sampler">
+        <div class="section-inner">
+            <h2 class="reveal">Try 3 exercises right now. Free.</h2>
+            <p class="sampler-intro reveal reveal-delay-1">We picked three exercises from three different decks — each takes 10 minutes, each creates an immediate moment of clarity, each requires nothing but something to write with.</p>
+
+            <div class="exercise-cards">
+                <div class="exercise-card accent-sage reveal">
+                    <span class="exercise-card-deck">Critical Thinking</span>
+                    <h3>The Assumption Excavator</h3>
+                    <p>Surface the hidden assumptions holding up your strongest opinions. Most people find 3. The exercise pushes you past 8.</p>
+                </div>
+                <div class="exercise-card accent-terra reveal reveal-delay-1">
+                    <span class="exercise-card-deck">Creative Thinking</span>
+                    <h3>The Alternate Universe</h3>
+                    <p>Break through functional fixedness — the tendency to see things only as their default purpose. The same rigidity AI reinforces every time it gives you the most probable answer instead of the most interesting one.</p>
+                </div>
+                <div class="exercise-card accent-slate reveal reveal-delay-2">
+                    <span class="exercise-card-deck">Decision-Making</span>
+                    <h3>The Pre-Mortem</h3>
+                    <p>Imagine your project has already failed. Now explain why. Research shows this technique increases the quality of risks identified by 30%.</p>
+                </div>
+            </div>
+
+            <p class="sampler-cta reveal">Get all three exercises as a designed PDF — free, immediately, when you join the waitlist.</p>
+            <a href="#waitlist-bottom" class="btn-primary reveal reveal-delay-1">Get the 3-Exercise Sampler</a>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Ochre (Writing & Composition) -->
+    <div class="stripe-divider ochre stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         DIFFERENTIATION
+         ============================================ -->
+    <section class="section differentiation">
+        <div class="section-inner">
+            <h2 class="reveal">This is a practice, not a program.</h2>
+            <div class="reveal reveal-delay-1">
+                <p>Most thinking tools give you knowledge to acquire. Mental models to memorize. Frameworks to file away.</p>
+                <p>Mind Gym gives you a practice to keep.</p>
+                <p>The exercises are designed to be returned to — your results change as your thinking evolves. The Assumption Excavator at 8 assumptions today might hit 14 in six months. The Pre-Mortem that surfaces 5 risks now might surface 12 after you've trained your prospective hindsight.</p>
+                <p>That's why it's a gym, not a course. You don't graduate. You get sharper.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Plum (Analytical Reasoning) -->
+    <div class="stripe-divider plum stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         CREDIBILITY
+         ============================================ -->
+    <section class="section credibility">
+        <div class="section-inner">
+            <h2 class="reveal">60 exercises. 60 peer-reviewed studies.</h2>
+            <div class="reveal reveal-delay-1">
+                <p>Every exercise in Mind Gym is grounded in a specific piece of published research — not a pop science book summary, not a TED talk reference, but an actual study you can look up.</p>
+                <p class="citations">Bensley &amp; Spero on metacognitive monitoring. Gilhooly et al. on divergent thinking. Mitchell, Russo &amp; Pennington on prospective hindsight.</p>
+                <p>This isn't self-help. It's applied cognitive science in a format you'll actually use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Indigo (Memory & Recall) -->
+    <div class="stripe-divider indigo stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         THE OFFER
+         ============================================ -->
+    <section class="section offer">
+        <div class="section-inner">
+            <h2 class="reveal">Coming soon.</h2>
+            <p class="offer-description reveal reveal-delay-1"><strong>Mind Gym</strong> — 6 physical card decks, 60 exercises, each backed by a unique peer-reviewed study.</p>
+            <div class="offer-price reveal reveal-delay-1">$79</div>
+            <p class="offer-price-note reveal reveal-delay-1">Early bird pricing for waitlist members</p>
+
+            <ul class="offer-benefits reveal reveal-delay-2">
+                <li>The 3-Exercise Sampler (free PDF, delivered immediately)</li>
+                <li>First access when Mind Gym goes on sale — including early bird pricing</li>
+            </ul>
+
+            <form class="waitlist-form reveal reveal-delay-2" id="waitlist-bottom">
+                <input type="email" placeholder="your@email.com" required aria-label="Email address">
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p class="form-note reveal reveal-delay-2">No spam. Just a note when it's ready.</p>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Sage -->
+    <div class="stripe-divider sage stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         FAQ
+         ============================================ -->
+    <section class="section faq">
+        <div class="section-inner">
+            <h2 class="reveal">Frequently asked questions</h2>
+            <div class="faq-list reveal reveal-delay-1">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Who is this for?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Knowledge workers who use AI regularly and want to keep their independent thinking skills sharp. PMs, consultants, strategists, writers, analysts — anyone whose value depends on thinking clearly when the tools stop working.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is this just flashcards?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. Flashcards help you memorize information. Mind Gym exercises are structured thinking workouts — each one walks you through a specific cognitive process backed by research. You do the exercise, not read it.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do I need any special materials?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Something to write with and 10 minutes. That's it.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Why physical cards instead of an app?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Because the whole point is to step away from the screen. The exercises work because you're thinking without digital assistance. An app would defeat the purpose.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How is this different from Pip Decks?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pip Decks are workshop facilitation tools — cards to reference during meetings. Mind Gym exercises are things you do yourself. You sit down, work through the steps, and train a specific cognitive skill. Different product for a different need.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What if I've already done an exercise?</span>
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Do it again. That's the point. Your results will be different every time because your thinking has changed. The Assumption Excavator at 8 assumptions becomes the Assumption Excavator at 14 — and that gap is the growth.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stripe Divider: Terra -->
+    <div class="stripe-divider terra stripe-reveal">
+        <div class="thick"></div>
+        <div class="gap"></div>
+        <div class="thin"></div>
+    </div>
+
+    <!-- ============================================
+         CLOSING CTA
+         ============================================ -->
+    <section class="section closing">
+        <div class="section-inner">
+            <h2 class="reveal">Your mind is the one tool AI can't upgrade for you.</h2>
+            <div class="reveal reveal-delay-1">
+                <p>You can keep it sharp. Or you can let it quietly atrophy while the algorithms get better.</p>
+                <p>Mind Gym gives you the practice.</p>
+            </div>
+            <p class="hero-cta-text reveal reveal-delay-2">Join the waitlist &mdash; get 3 free exercises to try today.</p>
+            <form class="waitlist-form reveal reveal-delay-2">
+                <input type="email" placeholder="your@email.com" required aria-label="Email address">
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p class="form-note reveal reveal-delay-2">No spam. Just a note when it's ready.</p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="site-footer">
+        <div class="stripe-divider sage" style="margin-bottom: 40px;">
+            <div class="thick"></div>
+            <div class="gap"></div>
+            <div class="thin"></div>
+        </div>
+        <span class="footer-wordmark">mindgym.co</span>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // Sticky header scroll effect
+        const header = document.getElementById('site-header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        // Scroll-triggered reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal, .stripe-reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isOpen = item.classList.contains('open');
+                const expanded = !isOpen;
+
+                // Close all others
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    openItem.classList.remove('open');
+                    openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // Toggle current
+                if (!isOpen) {
+                    item.classList.add('open');
+                }
+                button.setAttribute('aria-expanded', String(expanded));
+            });
+        });
+
+        // Form submission (placeholder — connect to your email service)
+        document.querySelectorAll('.waitlist-form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = form.querySelector('input[type="email"]').value;
+                const button = form.querySelector('button');
+                const originalText = button.textContent;
+
+                button.textContent = 'Added!';
+                button.style.background = 'var(--sage)';
+                button.style.borderColor = 'var(--sage)';
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    button.style.borderColor = '';
+                    form.reset();
+                }, 2000);
+
+                // TODO: Send email to your waitlist service
+                console.log('Waitlist signup:', email);
+            });
+        });
+    </script>
+
+</body>
+</html>
