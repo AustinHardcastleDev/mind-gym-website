@@ -324,7 +324,17 @@
         }
 
         .hero-content h1 {
-            margin-bottom: 0.5em;
+            margin-bottom: 0.3em;
+        }
+
+        .hero-subhead {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 380;
+            color: var(--ink-medium);
+            line-height: 1.6;
+            margin-bottom: 1.8em;
+            max-width: 440px;
         }
 
         .hero-content .waitlist-form {
@@ -943,6 +953,7 @@
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         .stripe-reveal .thick,
         .stripe-reveal .thin {
@@ -1018,6 +1029,10 @@
 
             .hero-content .form-note {
                 text-align: center;
+            }
+
+            .hero-content .hero-subhead {
+                margin: 0 auto 1.5em;
             }
 
             .hero-content .hero-narrative {
@@ -1099,17 +1114,18 @@
         <div class="hero-split">
             <div class="hero-content">
                 <h1 class="reveal">Your mind<br>needs a gym.</h1>
-                <div class="hero-narrative reveal reveal-delay-1">
+                <p class="hero-subhead reveal reveal-delay-1">Mind Sets is a 72-card exercise deck for keeping your mind sharp as you offload more cognitive work to AI.</p>
+                <p class="hero-cta-text reveal reveal-delay-2">Join the waitlist &mdash; get 3 free exercises to try today.</p>
+                <form class="waitlist-form reveal reveal-delay-2" id="waitlist-hero">
+                    <input type="email" placeholder="your@email.com" required aria-label="Email address">
+                    <button type="submit">Join Waitlist</button>
+                </form>
+                <p class="form-note reveal reveal-delay-2">No spam. Just a note when it's ready.</p>
+                <div class="hero-narrative reveal reveal-delay-3">
                     <p>For most of human history, nobody needed a gym. Daily life was the workout. Then machines took over the physical work — and slowly, without anyone noticing, we got weaker.</p>
                     <p>That's what the gym was for.</p>
                     <p>The same thing is happening now with your mind.</p>
                 </div>
-                <p class="hero-cta-text reveal reveal-delay-2">Join the waitlist &mdash; get 3 free exercises to try today.</p>
-                <form class="waitlist-form reveal reveal-delay-3" id="waitlist-hero">
-                    <input type="email" placeholder="your@email.com" required aria-label="Email address">
-                    <button type="submit">Join Waitlist</button>
-                </form>
-                <p class="form-note reveal reveal-delay-3">No spam. Just a note when it's ready.</p>
             </div>
             <div class="hero-image reveal reveal-delay-2">
                 <img src="images/hero.png" alt="Mind Sets exercise cards spread on a wooden desk beside a coffee cup, pen, and card pouch — a morning thinking session" fetchpriority="high">
