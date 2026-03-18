@@ -248,18 +248,19 @@
             height: 20px;
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            justify-content: center;
+            gap: 2px;
             flex-shrink: 0;
         }
 
-        .wordmark-stripe span:first-child {
-            flex: 1;
+        .wordmark-stripe .wm-thin {
+            height: 3px;
             background: var(--sage);
             border-radius: 1px;
         }
 
-        .wordmark-stripe span:last-child {
-            height: 4px;
+        .wordmark-stripe .wm-thick {
+            height: 8px;
             background: var(--sage);
             border-radius: 1px;
         }
@@ -910,8 +911,9 @@
     <header class="site-header" id="site-header">
         <a href="#" class="wordmark">
             <div class="wordmark-stripe">
-                <span></span>
-                <span></span>
+                <span class="wm-thin"></span>
+                <span class="wm-thick"></span>
+                <span class="wm-thin"></span>
             </div>
             <span class="wordmark-text">Mind Sets</span>
         </a>
